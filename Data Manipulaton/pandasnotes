@@ -1,0 +1,23 @@
+STEPS FOR DATA CLEANING AND PREPROCESSING :
+
+1. FINDING NULL VALUES
+2. HANDLING NULL VALUES
+2. FIX CATEGORIAL INCONSISTENCIES LIKE making everyone in lowercase
+3. REMOVE DUPLICATES
+4. RENAME COLUMNS FOR BETTER readability
+5. CREATE NEW necessary features
+6. HOT OR LABEL CODE categrial DATA
+7. CHANGE COLUMN dtypes if needed
+8. CHECK OUTLIERS USING different methods
+
+
+FEATURE ENGINEERING I LEARNT TODAY :
+1. EXTRACTING FEATURES FROM DATE
+2. BINING OR BUCKETING i.e. naming the age groups or any type of buckets (groups)
+3. FEATURE INTERACTION : combining two features and making one
+4. ONE HOT CODING : setting numerical values for categorial DATA
+5. SCALING / NORMALISATION : bringing all the features on same scale , when they vary too much like age is small number but height in cm is a large number then normalization brings these features on sam escale
+6. HANDLING SKEWED DATA : 
+7. POLYNOMIAL FEATURES : squaring or raising the features to a power used when we need to square or cube or ... featrue matrix
+8. MAPPING OR LABEL ENCODING : labeling the numbers and converting numerical data into categorial data like splitting into senior and junior on the basis of experience years
+9. COUNT ENCODING : encoding on the basis of frequency

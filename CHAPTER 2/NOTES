@@ -1,0 +1,109 @@
+# PIPELINES :
+- - The sequence of multiple data processing units is called data      
+    pipeline
+
+    pipelines are quite common in ML as we need to deal with a lot of data - and we need to  : clean it , transform it , prepare it , train on it.Instead of doing all this in one messy block we break it into smaller steps and each steps performs a particular task or the job.
+
+    how do components work ?
+    Each component in the pipeline :
+    1. pulls the data from a place say file or database
+    2. Processes it like cleaning , converting formats, filtering
+    3. stores the output at some place.
+    4. the next components picks it up and continues the jon
+       = = all the components dont need to run simultaneously
+   
+    Each component is self contained :
+    - each part of the pipeline does its own job independently
+    - only talks to the others through the data it saves
+    - we can replace and fix one part without breaking the whole thing
+    - it works well atleast for a while, the downstream components can   
+      use the last output of the faulted component and continue
+
+    This makes it :
+    - easier to understand 
+    - good for framework
+    - robust
+
+    What can go wrong ?
+    - the broken component can go unnoticed for some time if proper 
+      monitoring is not implemented.
+    - the next parts will keep running and they will use stale or old 
+      data
+    - due to this the system will slow down the performance will drop 
+      eventually.
+
+# LOOKING AT THE BIGGER PICTURE :
+
+  # FRAME THE PROBLEM :
+  - FIRST QUESTION : Asking the exact objective , seeing how much 
+    accurate our results should be , what will get affected by our results ,is it part of a system or and individual system, what are the expected benefits.
+  - This will determine which algos to select, what performance measures 
+    to use to evaluuate the model and how muuch effort to spend in 
+    tweaking it  
+
+  - SECOND QUESTION : What current solution, if exists, looks like. It   
+    will give us a reference, as well as insihts on how to solve the problem.
+
+  - Now frame the problem :  check if its supervised learning task or 
+    any other like regression , unsupervised, reinforcement, classification task or something else.
+
+  - IT IS CLEARLY A TYPICAL SUPERVISED LEARNING TASK,since you are given 
+    labeled training examples (each instance comes with the expected output, i.e., the districts median housing price).
+
+  - Moreover it is a typical regression task as we are asked to predict 
+    a value here.
+
+  - More specifcally its a multiiple regression problem since the system 
+    will use multiple features to predict the price of the house'
+
+  - It is a univariate regression problemm as well as we need to predict 
+    a single value for each district.
+
+  - If we weere trying to predict multipple values for the district it 
+    would have been a multivariate problem.
+
+  - There is no continuous flow of data and data is not big enough to  
+    not fit in the memory hence normal batch learning works fine here.
+
+  # SELECTING THE PERFORMANCE MEASURE :
+   - Typical PM for Regression problems is RMSE.
+   - Equation in book
+   - It gives an idea of how much error our system makes in its   
+     predictions, and it is sensitive to large errors.
+
+     =========== NOTATIONS ===============
+     > m = number of instances.
+
+     > x^(i) = the feature matrix of the ith instance in the dataset.
+       without the labels.
+
+     > y^(i) = the label of the ith instance (desired output value).
+     
+     > X = a matrix containing all the features of all the instances.
+       There is one row per instance and the  ith row = transpose of 
+       x^(i) [contains features of an instance horizontally making table].
+
+     > h is systems prediction function, also called hypothesis. When 
+       your system is given an instance's features vector x^(i) it output y- hat^(i) = h(x^(i)) for tht instance.
+
+     > RMSE(X,h) is the cost function measured on the set of examples 
+       using your hypothesis h.
+
+     > lower case italic - for scalar values (such as m or y)
+       lower case bold - function names
+       upper case bold - for matrices
+
+   - When ther are many outliers , use: MAE (Mean Absolute Error)
+   - both RMSE and MAE are methods to determine distance between vectors,
+     vector of prediction and vector of target values.
+
+   # checking the assumpptions :
+     -  lastly it is a good practice to checck the assumptions we have made befoe training the model.For example, the district prices are fed into another ml system but what id this ml system is going to categoorize the data into cheap medium and expensive then we dont need to knoow the exact value and this will become a classification problem not a regression problem. But in our case we do indeed need the precise values.
+   
+=========================================================================
+
+# GET THE DATA :
+
+
+
+  

@@ -1,0 +1,469 @@
+the ml systems are classified in borader categories due to their numerous types :
+1. whether they are trained with human supervision 
+   -- supervised , unsupervised, semisupervised and reinforcement learning
+2. whether or noot they can learn incrementally on fly
+   -- online or batch learning
+3. whther they work on compariing new data to known data or instead they recognize patterns and build a predictive model
+   -- instance based versus model based learning
+
+these criterias are not exclusive , we can combine them in any way we like.
+
+
+
+============ TYPES====================================================
+
+
+
+
+TYPE 1. BASED ON HUMAN SUPERVISION THEY GET:
+
+
+
+
+ # 1.1  SUPERVISED LEARNING :
+
+training data : Contains instance and the desired soliution of these instances called labels
+                Each instance paired with its label
+
+                A typical supervised learning task is classification. The spam filter is a good example
+                in this model is trained with many example emails with their classification of spam or ham 
+                and it must learn to classify the new emails
+
+                Another example is predicting price of car, with given features as mileage age brand etc 
+                called predictors. this sort of task is called regression. To train the system we nneed ot give it many examples of cars
+                inncluding both their predictors and their labels.
+
+
+
+In machine learing an attribute is a data type (mileage) while a feature has several meaning depending on the context but generally its attribute with its value ( mileage = 15000)
+
+# Regression is technique in machine learning which is used when the output value or output variable is continous and real , suchh as price age temp and sales.(Regression is technique in machine learning which is used when we need to predict a continous numerical value.)
+the model learns from the instances and labels tries to find a mapping function from inputs to outputs
+
+# classification is techique to classify two types of same entity
+
+Note : Some Regression algorithms  ( algorithms used to implement Regression ) can be used to implement Classification and some Classification algos can be used to implement Regression. Example :
+logistic regression is commonly used for regression as it cna output a value that corresponds to the probability of belonging to a given class(
+    e.g. 20% chance of being spam )
+
+Here are some most important Supervised Learning algorithms :
+1. K nearest Neighbors 
+2. Linear Regression 
+3. Logistic Regression
+4. Support Vector Machines
+5. Decision Tress
+6. Random Forest
+7. Neural Networks
+
+========================================================================
+
+# 1.2 UNSUPERVISED LEARNING :
+
+- In Unsupervised Learning the data or instance is not labeled. The system tries to learn without a teacher.
+
+Here are some of the most important unsupervised learning algorithms (most of these are covered in Chapter 8 and Chapter 9): 
+
+1. Clustering
+ — K-Means 
+ — DBSCAN 
+ — Hierarchical Cluster Analysis (HCA) 
+
+2. Anomaly detection and novelty detection 
+— One-class SVM ( support vector machines )
+— Isolation Forest
+
+3. Visualization and dimensionality reduction
+— Principal Component Analysis (PCA)
+— Kernel PCA
+— Locally-Linear Embedding (LLE)
+— t-distributed Stochastic Neighbor Embedding (t-SNE)
+
+4. Association rule learning
+— Apriori
+— Eclat
+
+Examples :
+
+example 1 : say u have a lot of data about blog's visitor. You may want to run a clustering algo to try to detect groups of similar user or visitors .At no point we would need to tell the algo which group visitors belongs to : it finds itself , it finds those connections without ou help. For example, it might notice that 40% of your users are comic book readers and read the books in evening, similarly many more clusters can be formed by it such as 20 % of the young kid readers read about tech and robotics and they read it at night. If we use HCA i.e Hierechal Clustering Algorithm, it may also subdivide each groupp into smaller groups. This may help you target your posts for each group.
+
+# Visualization Algos :
+
+- feed them a lot of complex and unlabeled data, and they output a 2d or 3d representation of your data that can easily be plotted. These algorithms try to stick or maintain the structure as far as possible (tryin to separate clusters preventing overlapping in visualization) so that we can understand how the data is organised and perhaps identify unsuspected patterns.
+
+# Dimensionality Reduction :
+
+- The goal is to simplify the data as much as possible without loosing too much information. This is done by feature extraction i.e. combining two or more features in one feature. for exmaple the cars mileage directly depends on its age over time and these both features (age and mileage) can be combined into one i.e car's wear and tear.
+
+- even the feature extraction a goood practice to do before feeding the data to a machine learning algorithm. we should try to reduce dimensions of a training data, the algo will run faster, the data will take up less disk and memory space and in some cases it may perform even better , performance here refers to calculated accuracy.
+
+# Anomaly detection : ( svm and isolation forest )
+
+It is process of detection of data points that may vary or deviate too much from the normal pattern in a dataset
+-- these idd points are called anomalies , outliers or exceptions
+
+- example : detecting unusual credit card detections to prevent frauds and detecting manufacturing defects or automatically remooviing the outliers in a database before feeding it another algorithm. the system is shown normal instances so that it can figure out where the data is normal and where the anomality exists.
+
+- another very similar is Novelty detection but novelty detection onlly expects to see only the normal data the toolerance for outliers is comparatively lower than anomality detection.
+
+# Association rule based learning :
+In this the goal is to dig deep into large amount of data and see the relations between the attributes. for example you run a supermarket , running an association rule on your salles data you may find that customers who buy bbq sauce and potato chips tends to buy steak as well. thus you may want to place them together.
+
+=========================================================================
+
+# 1.3 SEMISUPERVISED LEARNING
+- SOME algos can deall with partially labeled training data, usually a lot of unlabeled data and a little bit of labeled data. this is called supervised learning.
+
+best example are photo hosting services as Google Photos , you feed them few photos of your family ( supervised learning ) then they classify rest of the their photos with their photos in the separate folders (say)
+this is unsupervised learning part that is clustering. you just need ot name the photo or label the photo with persons name and it is able to name everyone in every photo. which is usefuul for searching photos.
+
+- Most semisup learning algos are combinations of unsup and sup learning algos. For example, deep belief networks (DBNs) are based on unsupervised components called restricted Boltzmann machines (RBMs) stacked on top of one another. RBMs are trained sequentially in an unsupervised manner, and then the whole system is fine-tuned using supervised learning techniques.
+
+=========================================================================
+# 1.4 REINFORCEMENT LEARNING
+- just like a reward system. Very differrent form the other algorithms.
+here the larning system is called an agent in this context , can observe the environment, select and perform tasks and get rewards and penalties in the form of positive and negative rewards. it must learn by itself whats the best strategy called policy to get he most reward overtime.
+the policy defines waht actions the agent should choose when it comes to completing a task or executing it in a given situation.
+
+
+
+
+TYPE 2 - BASED ON WHETHER THE SYSTEM CAN LEARN INCREMENTALLY FROM STREAM OF INCOMING DATA 
+
+
+
+
+
+# 2.1 BATCH LEARNING ( NOT LEARNING INCREMENTALLY ) :
+- In this type oif learning the system doesnt learn from the incoming new data. the system is first trained on the huge amount of available data then it is published for use and it only generates the ouput based on the trained or old data.this is called offline learning. 
+
+- It doesnt learn from new data if we want to make him learn from the new data we will have to train whole system again with complete data with old and new , then stop the old system and replace it with new. This generally takes a lot of time and computing resources.
+
+- This whole process can be automated easily so even a batch learning can adapt and learn from new data. simply update the data and train a new version of the system from scratch as often as needed.
+
+- the solution is simple just train the whole batch of data again in 24hrs or weekly. if your system want to learn rapidly then we will need more reactive solution to for example while predicting stock prices.
+
+- also train the full set of data agin takes a lot of computing resources.
+if the data is huge it may take a lot of time and computing to train the batch system with this data even impossible sometimes when the data is too much.
+
+# 2.2 ONLINE LEARNING ( LEARNING INCREMENTALLY ) :
+- IN ONLINE LEARNING the system learns incrementally by feeding the it data instances sequentially either individually or in smalll groups called mini batches. this is fast and cheap 
+
+- online learning is best when the resources are limited, we recieve continuous data to train (ex in stock price prediction) and need to adapt to changes rapidly or autonomously.
+
+- once the system has learned form the data now we can discard it unless we want to go back to the previous sytem for a replay.
+this feature is best useful to train a huge amouunt of data that cant fit in the systems main memory , we divide the data in few parts and train the system on it , mow  this data is discarded and then the next mini batch or part is treatted as new data until the system has run all of the data and the system is trained. In this way online learning saves time , computation cost and space. This is called out of core learning and usually done offline.
+
+- important parameter that we should keep in mind is - learning parameter. if the learning parameter is set too high then the system will learn too fast and forget the old data very soon , now the system will be able to react better to only new data such as new type of spam emails. if the learning parameter is set too low the system will learn slowly and will not be able to react efficiently to new instances i.e low sensitivity to the noise new data or anomalies.
+
+- one huge problem with the online learning is that if the system is fed with bad data then the performance of the system will definitely decline overtime. suppose a robots sensor is faulted and it is continuously recieving bad data and it can cause problems hence we need to check when the learning is to turn off and teach sustem how to react to abnormmal data when we notice any drop in performance of system.
+
+
+
+
+TYPE 3 : BASED OF HOW THEY GENRALIZE THE DATA ( PATTERN OR COMPARISON ) :
+
+
+- OTHER way to categorize machine learning systems is how they generalize the data. Most machine learning task are about predictions this means given a number of training examples the system needs to be able to generalize to examples it has never seen before. Having a good performance measure on the training data is good but insufficient the system should perform good at the new data.
+
+============TYPES=======================================
+
+# 3.1 INSTANCE BASED LEARNING :
+
+- Most trivial way of learning is learnig by heart, if we implement this to a system to flag spam emails then the system will see the emails as spam emails which are  identical to the emails flagged as spam by the user themselves. - not the worst soolution but certainly not the best.
+
+- instead of just flagging emails identical to known spam emails the spam filter could be programmed to flag the emails that are similar to that of known flagged emails. this requires measure of similarity. a very basic is number of common words between the input mail and the known spam mail. the system would now flag the similar emails as well.
+
+- this is called instance based learning : the system learns examples by heart then generalizes the new cases by comparing them to learned examples, using similarity parameter.
+
+
+
+# 3.2 MODEL BASED LEARNING :
+
+- Another way to genralize is making a model from the learned examples and then using it to make predictions. This is called model based learning.
+
+- taking an example of 'knowing if money mkes people happy' - taking the data from the suitable sitees for gdp per capita aand life satisfaction.
+
+- forming the table for each attribute and then joining them further after plotting the graph of life satisfaction vs gdp per capita we will se the trend which the plot follows and we will choose the model accordin to the seen trend.
+
+- seeing the plot in the book it can eb said that the rise is more or less linera as the GDP per capita increases. so we decide to model life satisfaction as a linear function of gdp per capita. this step is called model selection : we selected a linear model of Life Satisfaction ( LS )
+with just one attribte gdp per capita.
+
+example : life_satisfaction = theta0 + theta1, x GDP_per_capita
+
+- by changing these paratmeter we can modify our model how we want.
+
+- before we use the model we need to specify these parameters. To have these parameters selected best we need to define performance measures. we can either define the utility funtion / fitness function which defines how good our mdoel is or we can define cost function two define how bad our model is. 
+
+- for linear regression we use cost function that measure the distance between the linear models prediction and the trained data , the goal is to minimize the distance.
+
+- this is where linear regression algo comes in , it automatically selects the best suited parameters for our linear model. This is called training the model. 
+
+- after this we are ready to run the model to make predictions. 
+
+- seeing the code we have trained the linear regression model using scikit learn lib now we can use this moodel to predict results for other countries.
+
+- we checked for cyprus 20k gdp (closest to slovanian) the results comes out to be 5.7 
+
+- using instance based learining :
+if we zoom out and look at the other two closest countries to cyprus  are portugal and spain with LS as 5.1 and 6.5. averaginng these three values we will get 5.77 which is verry close to the model based prediction. This simple algorithm is called k nearst neighbors regression algorithm.
+
+- - if all went well, your model will make good predictions. if not, then we will have to increase the attributes , get more or better quality data for training the model or better training model like polynomial regression.
+
+- - summary :
+1. we studied the data
+2. we selected the model
+3. we trained the model on training data (algorithm searched for the model parameter values that minimizes the cost function)
+4. we passed on new data to model to make predictions this is called inference, hoping that the model is generalized well.
+
+
+
+
+=========================================================================
+
+
+
+# Main challanges of ML :
+
+- - - - (I) Examples of bad data - - - - - - - - - - - 
+
+1. Insufficient amount of training data :
+
+   unlike humans machine requires alot of data for training them, even simplest of the models and tasks requires thousands of examples, and for complex tasks like speech and image recognition  it requirs millions of examples.
+
+2. The unreasonable effectiveness of data :
+
+   in a research paper published it came out that all the algorithms performed similarly well when provided enough amount of data, inclludong the simple ones in case of natural language disambiguishment.
+
+   these results suggest that we may need to reconsider the tradeoff between spending on developing algorithms versus spending it on corpus development.
+
+   but it should be noted that developing the huge amount of data is neither easy nor cheap. so we cant abandon algorithms yet.
+
+3. Non Representative Training Data :
+
+   In order to generalize welll our training data should ahve data for representations of new cases we want to generalize. this is true wheteher we use instance based learning or model based learning.
+
+   For example we used the data in previous example was not representative, a few countries were missing.Adding only few countries to the data the straight line is completely changed which shows that the simple linear model like this can never perform well.
+
+   By using thsi non repersentative data we trained a model that is unlikely to make accurate preditions, specially for very poor and very rich countries.
+
+   It is crucial to use a training data that is representative of the cases that we want to generalize to. this often harder than it sounds.
+   if the sample is too small you will have sampling noise (i.e. non representative data as a result of chance) even for the huge samples if the data sampling method is not appropriate then it will create sampling bias.  example data taken from a private hospital will perform poorly for rural patients, creating sampling bias.
+
+   # example for sampling noise :
+
+   Imagine you’re trying to build a model to predict if someone has a disease. In the full population, 50% have it and 50% don’t. But if you randomly pick a small training set of 20 people, it’s very possible that:
+
+   You might get 15 people with the disease and only 5 without.
+
+   That’s not the true ratio — it’s just sampling noise caused by random chance.
+
+   So your model learns patterns as if the disease is way more common than it really is.
+
+
+4. Poor quality data :
+
+   If our training data is full of errors , outliers and noises then it is abvious that the model is not going to perfoorm well, it will make it difficult foor the system to generalize the underlying pattern well. it is often well worth the time to clean the data befor using it to train the model.
+   For example :
+    - if some instances are clearly outliers, it may help to discard them or try to fix the errors manually.
+    - if some isntances are missing a few features , we must decide whether we have to drop those instances or fill themm wiht the average value or train one model without them and one with them.
+
+
+5. Irrelevent features :
+   Our system will be capable of learning if the data got the relevant features and no too many irrelevant ones. A critical part of the success of the machine learning proects is coming up with good set of features to train on. This is called feature engineering which involves :
+   a) Feature selection :
+      select the most useful features among the available features to train on.
+
+   b) Feature extraction :
+      combining existing features to produce more useful one(as we saw dimenionality reduction algorithm can help).
+
+   c) Creating new features using ne data.
+
+
+- - - - - (II)Examples of bad algorithm - - - - - - - - - - - - -
+
+1. Overfitting Training Data :
+   say we are visiting somehwere and the taxi driver rips you off we will generaliize and say all the taxi driver in that area are llike that only. Overgenralizing is what humans do easily and machines can fall in this trap too if we are not careful. in machines it is called overfitting  : it means that the model performs well on the training data, but it does not generalize well.
+
+   - -  even complex model like neural networks can fall in this trap as they can detect subtle patterns even in small data sets, for example if the data is noisy and too small then the model is likely to detect patterns in the noise itself. and obv these patterns will not generaliize new instances. For example : say you feed your life exp model with many more attributes uninformative ones too like country name then the model may detect pattern that all the countries in the training data with w in their name have l s > 7 does that hold true for rawanda and zimbabwe as well ?
+
+   - - overfitting happens when the model is too complex relative to the amount and noiseness of the training data. The possible solutions are:
+    a) to simplify the model using a linear model rather than high degree polynomial moodel, by reducing the attributes in the training data or by constraining the model
+
+    b) to gather more training data
+
+    c) to reduce the noise in the training data ( ex fix data errors and remove outliers.)
+
+    - - constraining the model to make it simpler and reduce the rsikk of overfitting is called regularization. 
+    for exampple :
+    in case of life satisfaction model we have two parameters x1 and x2 (used in place of theta 1 and theta 2) now the model has two degee of fredom if we make it to 1 then the line will be able to move in one direction only the model will become very simole and will not pperform well. and if we contraint the values of x1 the model willl be complex than the first one but simpler than model with dof = 2
+
+    - - The amount of regularization to apply can be controlled by using hyperparameter of the learning algortihm ( not of the model ).
+    As such, it is not affected by the learning algo itself; it must be set prior to training the model. If we set the hyperparameter to a very large value we will get a slop very close to zero, the learning model will almost certainly not overfit the training data, but it will be less likely to find a good solution. TUning hyperparameter is one of the crucial part of building machine learning system
+
+
+    2. Underfitting The training Data :
+    - -  occurs when model is too simple to learn the underlying structure of the data.
+    - - in LS , the model is likely to underfit; reality is just much more complex than the model, so predictions are bound to be inaccurate even on the training examples.
+
+    THE main options to fix :
+    a) selecting more powerful nodel, with more parameters.
+    b) feeding better features to the learning algo ( feature engineering )
+    c) reducing the constraints on the model; reducing the hyperparamter.
+
+    STEPPING BACK - SUMMARIZING :
+
+    1. We make machines learn to perform well on the tasks
+
+    2. We feed them data and make them learn rather than explicit 
+       programming.
+
+    3. There are vsrious types of learning methods
+
+    4. In an ml proect we gather training data and then we clean it ,   
+       remove outliers , fix errors , and then feed it to the model. if 
+       algo is model based then it tunes some parameters to fit the model to training data and hopefully it will make good prediction for new data.
+       if the algo is instance based then the machine will learn the 
+       training data by heart and generalize it to new instances by 
+       forming similarity parameter to compare them with learned data.
+
+    5. The system will not perform well if your data is too small , 
+       noise , contains errors and outliers or polluted with irrelevant 
+       features. it will also not pperfoorm well if your model is too 
+       simple or too complex.
+
+After training we cant just exppect our model to work finely , we need to evaluate it  :
+
+# TESTING AND VALIDATING :
+
+TO evaluate the mode in a better way :
+- - we should divide the data into two parts : training set and testing 
+    set, names have their ususal meaning.
+
+- - The error rate on trained examples =  training error
+    The error rate on new instance = generalization error ( or out of sample error), by evaluating our model on test set, we get this error. The value of this error tells how the model will perform on the new instances.
+
+- - If Training Error is low and Generalization error is high, then the
+    model is overfitting the trainig data.
+
+
+# HYPERPARAMETER TUNING AND MODEL SELECTION :
+
+Model evaluation : 
+- -  simple enough , can be done by just usin gtest set.
+- -  select which model generalizes better after training all the models
+
+Hyperparameter Value Determination :
+- - suppose the linear model generalizes better
+- - 1st option - - train 100 models on training set for 100 values of 
+    hyperparameter. Suppose we found best HP value that produces llowest generalization error say just 5%.
+    but on production it didnt perform as expected , it gave 15% error.
+    Problem here is that we measured gen error multiple times on the training set and yoou adapted the model and hyperparameter to produce the best model for the particular set. This means that the modelis unlikely to perform better as well on new data.
+
+- - A common solution to abv prob is holdout valdation : you simply hold 
+    out a part of training set to evaluate several candidate models and 
+    select the best one. The new heldout set is called validation set or dev set. We train the multiple models with various hyperparameters on reduced training set and select the model that performs best on the validation set. After the heldout validation process, you trian the model on full training set including the valliadtion set and then the model is tested against the testing set.
+
+
+=======Data set distribution ====
+
+Full Dataset
+│
+├── Training Set (usually ~70-80%)
+│     ├── Model is trained on this
+│     └── A portion is carved out as a **Validation Set**
+│
+└── Test Set (usually ~20-30%)
+      └── Only used once at the very end!
+
+- - the problems with above solutions :
+    - - if the validation set is too small then the evaluation might not be appropriate and we may end up selecting the suboptimal model by mistake.
+    - - if the validation set will be too large then the training set will be very small and then the model trained on smmall training set might perform largely different from the model trained with the complete training set later.
+
+- - - - Solution to above problem - - - - 
+
+# cross validation :
+-- split your database into k validation sets 
+-- take k - 1 sets to train the model and remainng one set for  
+   validation or evaluation
+-- repeat the above step until evaluated for all the validation sets.
+-- by averaging out all the evaluation of a model, we get a much more 
+   accurate estimate of performance.
+
+drawback = = the time is multiplied by the number of validation sets.
+
+# to tackle this - 
+-- use parallel processing using all cores of cpu.
+-- Use a smaller subset of data or a lighter model to get a rough      
+   estimate of good hyperparameters.
+-- These are smart search algorithms that eliminate bad hyperparameter 
+   combos early, saving compute.
+-- AutoML Tools to automate the process
+-- RandomizedSearchCV tries random combos, and often finds great results 
+   much faster for selecting hyper parameters
+
+
+Answers to questions :
+
+1. - It is a fielld of study which enables machines to learn from the data without being programmed explicitly.
+
+
+2. - a)pattern recognition
+     b)decision making / predictions
+     c)anomaly detection
+     d)natural language disambiguishment
+
+
+3. - Training set containing data instance with its solution.
+
+4. - a) Classification b) Regression
+
+5. - a)Clustering
+     b)Dimensionality Reduction
+     c)Anomaly detection
+     d)Association rule learning
+
+6. - Reinforcement Learning
+
+7. - Hierarchal Cluster Analysis, kmeans , DBSCAN
+
+8. - Supervised Learning
+ 
+9. - ONline learning is a learning method in which machines learn incrementallly from the incoming flow of data. In this the old data on which the machine is already trained is destroyed. It can also be used to train on huge amount of data in limited resources.
+
+10. - Out of core learning : when the system learns the data that can not fit in its main memeory and its core cant handle it then it is divided into segments and the system is trained in segments one after the other until we rean out of data.This is generally done offline and known as out of core learning.
+
+11. - Instance Based learning
+
+12. - model parameters are set after we have selected the algorithm and model but hyperparameter is set before all this it is set for algorithm not for model.
+
+13. - They search for the best parameters and underlying pattern in the 
+      training dataset. Forming a model through these patterns to make predictions.They use performance measures like utility functions which measures goodness of an algo and cost functions to measure how much bad an algo is. They make predictions based on the learned model parameters to make predictions about new unseen data.
+
+
+14. - a) Insufficient data 
+      b) Non representative data
+      c) Poor data
+      d) Irreleveant Features
+      e) Unreasinablle effectiveness of data
+      f) overfitting
+      g) Underfitting
+
+15. - Overfitting of Training Data
+      possible solutions:
+      a) Using linear model rather than using high degree polynomial.
+      b) removing anomalies, outliers and fixing errors
+      c) using more data
+
+16. - To see how much accurate our model is.
+
+17. - Validation set is a part of training set used   
+      while selecting or tuning hyperparameters. When we train the model before testing using test set we test the model with validation set.
+      we also use it to compare models on how  they perform with validation set.
+
+18. - The model might learn already from the test set i.e. overfitting 
+      the test set and give accurate predictions with the test set but during production it might not perform well as it performed in the testing phase.
+
+19. - Divinding the data set in k validation sets and then taining the 
+      model with k-1 validations sets and testing using the left validatiion set. Same is repeated until no validation sets are left.
+
+
